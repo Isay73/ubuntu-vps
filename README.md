@@ -2,64 +2,40 @@
 
 ## Overview
 
-This repository documents my Ubuntu VPS environment used to host self-managed services and infrastructure projects.
+This repository documents my self-hosted Ubuntu VPS infrastructure.
 
-The goal of this project was to learn Linux administration, networking, Docker, VPN deployment and self-hosted services while building a practical environment for everyday use.
+The server runs a Docker-based Nextcloud stack with PostgreSQL and Redis, protected behind an Nginx reverse proxy with HTTPS. I also use WireGuard and wg-easy for secure remote access and VPN user management.
+
+This project represents practical experience with Linux administration, Docker, networking, reverse proxy configuration, SSL, VPN and infrastructure troubleshooting.
 
 ---
 
-## Infrastructure
+## Stack
 
-- Ubuntu Server
+- Ubuntu Server 24.04 LTS
 - Docker
 - Docker Compose
-- Nginx Reverse Proxy
-- WireGuard VPN
-- wg-easy
 - Nextcloud
-- DNS
-- SSL (Let's Encrypt)
-
----
-
-## Features
-
-- Self-hosted services
-- Secure remote access using WireGuard
-- Docker container deployment
-- Reverse proxy with HTTPS
-- Automated file synchronization
-- VPN user management
-- Basic server hardening
-
----
-
-## Technologies
-
-- Ubuntu
-- Docker
+- PostgreSQL 16
+- Redis 7
 - Nginx
+- Let's Encrypt
 - WireGuard
-- Nextcloud
-- Bash
-- Networking
-- DNS
-- SSL
+- wg-easy
 
 ---
 
-## What I Learned
+## Repository Structure
 
-This project helped me gain practical experience with Linux administration, networking, Docker deployment, VPN configuration, reverse proxies, SSL certificates and troubleshooting production-like environments.
-
-I also used modern AI tools to accelerate development and solve technical problems while making sure I understood every configuration I applied.
-
----
-
-## Future Improvements
-
-- Automated backups
-- Monitoring
-- CI/CD deployment
-- Infrastructure as Code
-- Security improvements
+```text
+ubuntu-vps/
+├── docker-compose.yml
+├── docs/
+│   ├── architecture.md
+│   └── security.md
+├── nginx/
+│   ├── README.md
+│   └── nextcloud.conf
+└── scripts/
+    ├── update.sh
+    └── restart-stack.sh
