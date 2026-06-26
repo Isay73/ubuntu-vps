@@ -1,56 +1,36 @@
-# Architecture
+# Infrastructure Architecture
 
-```text
-                   Internet
-                       │
-                DuckDNS Domain
-                       │
-                Let's Encrypt
-                       │
-                    Nginx
-                       │
-              127.0.0.1:8080
-                       │
-                 Nextcloud
-                 │       │
-            PostgreSQL  Redis
+Internet
+   |
+DuckDNS / Domain
+   |
+Let's Encrypt SSL
+   |
+Nginx Reverse Proxy
+   |
+127.0.0.1:8080
+   |
+Nextcloud Container
+   |
+PostgreSQL + Redis
 
-WireGuard VPN
-        │
-    wg-easy
-        │
- Remote Clients
-```
-
----
-
-## Operating System
-
+Components
 Ubuntu Server 24.04 LTS
-
----
-
-## Containers
-
-- Nextcloud
-- PostgreSQL
-- Redis
-- wg-easy
-
----
-
-## Reverse Proxy
-
+Docker
+Docker Compose
+Nextcloud
+PostgreSQL
+Redis
 Nginx
-
----
-
-## SSL
-
 Let's Encrypt
+WireGuard
+wg-easy
+Description
 
----
+This infrastructure is built around a self-hosted Ubuntu VPS.
 
-## DNS
+Nginx works as a reverse proxy and forwards HTTPS traffic to the local Nextcloud container running on 127.0.0.1:8080.
 
-DuckDNS
+Nextcloud uses PostgreSQL as the database and Redis for caching.
+
+WireGuard and wg-easy are used for secure remote access and VPN client management.
