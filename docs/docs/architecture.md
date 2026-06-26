@@ -1,31 +1,56 @@
-# Infrastructure Architecture
+# Architecture
 
 ```text
-Internet
-      │
-   DuckDNS
-      │
-Let's Encrypt
-      │
-    Nginx
-      │
- Docker Compose
- ├───────────────┐
- │               │
-Nextcloud     WireGuard
- │
-PostgreSQL
- │
-Redis
+                   Internet
+                       │
+                DuckDNS Domain
+                       │
+                Let's Encrypt
+                       │
+                    Nginx
+                       │
+              127.0.0.1:8080
+                       │
+                 Nextcloud
+                 │       │
+            PostgreSQL  Redis
+
+WireGuard VPN
+        │
+    wg-easy
+        │
+ Remote Clients
 ```
 
-## Services
+---
 
-- Ubuntu Server
-- Docker
+## Operating System
+
+Ubuntu Server 24.04 LTS
+
+---
+
+## Containers
+
 - Nextcloud
 - PostgreSQL
 - Redis
-- Nginx
-- WireGuard
 - wg-easy
+
+---
+
+## Reverse Proxy
+
+Nginx
+
+---
+
+## SSL
+
+Let's Encrypt
+
+---
+
+## DNS
+
+DuckDNS
