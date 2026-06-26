@@ -40,7 +40,7 @@ ubuntu-vps/
     ├── update.sh
     └── restart-stack.sh
 
-Key Features
+   Key Features
 Self-hosted Nextcloud server
 PostgreSQL database backend
 Redis caching
@@ -79,4 +79,4 @@ Public IP addresses
 Passwords
 Private keys
 Tokens
-SSL certificate paths with real domains
+SSL certificate paths with real domains 
