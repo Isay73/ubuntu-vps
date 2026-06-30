@@ -4,13 +4,41 @@
 
 This repository documents my self-hosted Ubuntu VPS infrastructure.
 
-The server runs a Docker-based Nextcloud stack with PostgreSQL and Redis, protected behind an Nginx reverse proxy with HTTPS. I also use WireGuard and wg-easy for secure remote access and VPN user management.
+The server runs a Docker-based Nextcloud stack with PostgreSQL and Redis, protected behind an Nginx reverse proxy with HTTPS.
 
-This project represents practical experience with Linux administration, Docker, networking, reverse proxy configuration, SSL, VPN and infrastructure troubleshooting.
+WireGuard and wg-easy provide secure remote access and VPN client management.
+
+This project represents practical experience with Linux administration, Docker, networking, reverse proxy configuration, SSL, VPN deployment and infrastructure troubleshooting.
 
 ---
 
-## Stack
+## Architecture
+
+```text
+                 Internet
+                      │
+               DuckDNS Domain
+                      │
+            Let's Encrypt SSL
+                      │
+                  Nginx
+                      │
+              127.0.0.1:8080
+                      │
+                 Nextcloud
+                  │       │
+             PostgreSQL  Redis
+
+             WireGuard VPN
+                    │
+                 wg-easy
+                    │
+              Remote Clients
+```
+
+---
+
+## Technology Stack
 
 - Ubuntu Server 24.04 LTS
 - Docker
@@ -34,54 +62,23 @@ ubuntu-vps/
 │   ├── architecture.md
 │   └── security.md
 ├── nginx/
-│   ├── README.md
 │   └── nextcloud.conf
-└── scripts/
-    ├── update.sh
-    └── restart-stack.sh
+├── scripts/
+│   ├── update.sh
+│   └── restart-stack.sh
+├── screenshots/
+│   ├── server-overview.png
+│   ├── server-services.png
+│   ├── nextcloud-dashboard-redacted.png
+│   ├── wireguard-ui-redacted.png
+│   ├── disk-usage.png
+│   └── memory-usage.png
+└── README.md
+```
 
-   Key Features
-Self-hosted Nextcloud server
-PostgreSQL database backend
-Redis caching
-Docker-based deployment
-Nginx reverse proxy
-HTTPS using Let's Encrypt
-Local-only container exposure through 127.0.0.1:8080
-Secure remote access with WireGuard
-VPN user management with wg-easy
-Basic automation scripts for updates and restarts
-What I Built
+---
 
-I deployed and maintained a working Ubuntu VPS environment for self-hosted services.
-
-The main service is Nextcloud, running in Docker with PostgreSQL and Redis. Nginx is used as a reverse proxy, while the Nextcloud container is only exposed locally on 127.0.0.1:8080.
-
-WireGuard and wg-easy are used for remote access and VPN client management.
-
-What I Learned
-Linux server administration
-Docker Compose deployment
-Reverse proxy configuration
-SSL certificate setup
-VPN setup and troubleshooting
-Docker networking
-Basic server security
-Infrastructure documentation
-Security Notes
-
-Sensitive data is not included in this repository.
-
-The following values are replaced before publishing:
-
-Real domain names
-Public IP addresses
-Passwords
-Private keys
-Tokens
-SSL certificate paths with real domains 
-
-**## Screenshots
+## Screenshots
 
 ### Server Overview
 
@@ -95,13 +92,13 @@ SSL certificate paths with real domains
 
 ---
 
-### Nextcloud
+### Nextcloud Dashboard
 
 ![Nextcloud Dashboard](screenshots/nextcloud-dashboard-redacted.png)
 
 ---
 
-### WireGuard
+### WireGuard VPN
 
 ![WireGuard UI](screenshots/wireguard-ui-redacted.png)
 
@@ -115,4 +112,75 @@ SSL certificate paths with real domains
 
 ### Memory Usage
 
-![Memory Usage](screenshots/memory-usage.png)**
+![Memory Usage](screenshots/memory-usage.png)
+
+---
+
+## Key Features
+
+- Self-hosted Ubuntu VPS
+- Docker-based infrastructure
+- Nextcloud cloud storage
+- PostgreSQL database
+- Redis caching
+- Nginx reverse proxy
+- HTTPS using Let's Encrypt
+- Local-only container exposure (`127.0.0.1:8080`)
+- Secure remote access with WireGuard
+- VPN client management with wg-easy
+- Infrastructure automation scripts
+
+---
+
+## What I Built
+
+I built and maintain a self-hosted Ubuntu VPS environment for running production-like infrastructure services.
+
+The core service is Nextcloud running in Docker with PostgreSQL and Redis.
+
+Nginx works as a reverse proxy, exposing the application securely over HTTPS while keeping the container available only through the local interface.
+
+WireGuard and wg-easy provide secure remote administration and VPN access.
+
+I also created automation scripts for infrastructure maintenance and updates.
+
+---
+
+## What I Learned
+
+- Linux server administration
+- Docker Compose deployment
+- Container networking
+- Reverse proxy configuration
+- SSL certificate management
+- VPN deployment
+- Docker troubleshooting
+- Infrastructure documentation
+- Production-style service management
+
+---
+
+## Security
+
+Sensitive information has been removed from this repository.
+
+The following data is replaced before publishing:
+
+- Real domain names
+- Public IP addresses
+- Database passwords
+- Private keys
+- Tokens
+- SSL certificates
+- Secrets
+
+---
+
+## Future Improvements
+
+- Automated backups
+- Monitoring with Grafana
+- Prometheus metrics
+- CI/CD deployment
+- Infrastructure as Code
+- Automatic health checks
