@@ -80,3 +80,39 @@ Passwords
 Private keys
 Tokens
 SSL certificate paths with real domains 
+
+**## Screenshots
+
+### Server Overview
+
+![Server Overview](screenshots/server-overview.png)
+
+---
+
+### Running Services
+
+![Running Services](screenshots/server-services.png)
+
+---
+
+### Nextcloud
+
+![Nextcloud Dashboard](screenshots/nextcloud-dashboard-redacted.png)
+
+---
+
+### WireGuard
+
+![WireGuard UI](screenshots/wireguard-ui-redacted.png)
+
+---
+
+### Disk Usage
+
+![Disk Usage](screenshots/disk-usage.png)
+
+---
+
+### Memory Usage
+
+![Memory Usage](screenshots/memory-usage.png)**
